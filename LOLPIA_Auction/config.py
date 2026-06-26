@@ -1,4 +1,4 @@
-TEAM_NAMES = ["A", "B", "C", "D", "E"]
+TEAM_NAMES = ["사라", "이궤", "이브", "싶오", "채집"]
 
 START_BUDGET = 1000
 
