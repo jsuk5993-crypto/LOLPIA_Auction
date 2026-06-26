@@ -1754,3 +1754,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+/* 팀 슬롯은 타이머 갱신 때마다 흔들리지 않게 고정 */
+.draft-player-slot.filled {
+  animation: none !important;
+}
