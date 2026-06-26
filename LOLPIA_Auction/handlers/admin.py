@@ -21,11 +21,11 @@ from handlers.auction import (
 
 def load_players_from_csv():
     team_leaders = {
-        "A": "사 라",
-        "B": "이 궤",
-        "C": "이 브",
-        "D": "싶 오",
-        "E": "채집당함",
+        "사라": "사 라",
+        "이궤": "이 궤",
+        "이브": "이 브",
+        "싶오": "싶 오",
+        "채집": "채집당함",
     }
 
     leader_profiles = {}
