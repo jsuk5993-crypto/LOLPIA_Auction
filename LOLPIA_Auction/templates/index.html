@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LOLPIA Auction</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="hero-header">
+      <div class="line"></div>
+      <div class="brand">
+        <h1><span>LOLPIA</span> AUCTION</h1>
+        <p>LEAGUE OF LEGENDS PLAYER AUCTION</p>
+      </div>
+      <div class="header-links">
+        <a class="admin-link" href="/admin">관리자</a>
+        <a class="admin-link" href="/team">팀장</a>
+      </div>
+    </header>
+
+    <main class="broadcast-layout">
+      <section class="main-stage">
+        <div class="timer-circle">
+          <span id="timer">15</span>
+          <small>초</small>
+        </div>
+
+        <p class="label">CURRENT PLAYER</p>
+        <h2 id="player-card-name" class="stage-player">-</h2>
+        <p id="player-position" class="stage-position">POSITION</p>
+
+        <div class="stage-bid">
+          <div>
+            <span>최고 입찰팀</span>
+            <strong id="team">-</strong>
+          </div>
+          <div>
+            <span>최고 입찰가</span>
+            <strong><span id="bid">0</span>P</strong>
+          </div>
+        </div>
+
+        <p class="phase">상태: <span id="phase">waiting</span></p>
+      </section>
+
+      <aside class="right-board">
+        <section class="board-card">
+          <h3>팀 잔여 포인트</h3>
+          <div id="teams" class="team-list"></div>
+        </section>
+
+        <section class="board-card">
+          <h3>최근 로그</h3>
+          <div id="log-list" class="log-list">
+            <p>아직 로그가 없습니다.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/static/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LOLPIA Team</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="draft-body">
+  <div class="draft-app">
+
+    <header class="draft-top">
+      <section class="draft-top-panel">
+        <h3>경매 진행 현황</h3>
+        <div class="progress-stats top-progress">
+          <div>
+            <span>총 선수</span>
+            <strong id="stat-total">0명</strong>
+          </div>
+          <div>
+            <span>낙찰 완료</span>
+            <strong id="stat-sold">0명</strong>
+          </div>
+          <div>
+            <span>남은 선수</span>
+            <strong id="stat-left">0명</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="draft-title">
+        <h1>롤피아 경매</h1>
+        <p>LOLPIA AUCTION</p>
+      </div>
+
+      <section class="draft-top-panel">
+        <h3>최근 경매 로그</h3>
+        <div id="team-log-list" class="team-log-list top-log">
+          <p>아직 로그가 없습니다.</p>
+        </div>
+      </section>
+    </header>
+
+    <main class="draft-grid">
+      <section class="draft-left">
+        <div id="team-roster-list" class="team-roster-list"></div>
+      </section>
+
+      <section class="draft-center">
+        <div class="auction-status">현재 경매 진행 중</div>
+
+        <div class="auction-player-card">
+          <div class="player-image-placeholder">?</div>
+          <h2 id="team-current-player">-</h2>
+          <p id="team-current-position">POSITION</p>
+        </div>
+
+        <div class="auction-price-box">
+          <span>현재가</span>
+          <strong><b id="team-current-bid">0</b>P</strong>
+        </div>
+
+        <div class="auction-timer-box">
+          <span>남은 시간</span>
+          <strong id="team-timer">15</strong>
+          <small>SEC</small>
+        </div>
+      </section>
+
+      <section class="draft-right">
+        <div class="bid-board">
+          <h2>현재 입찰 현황</h2>
+          <div id="bid-rank-list" class="bid-rank-list"></div>
+        </div>
+
+        <div class="quick-bid-board">
+          <h2>빠른 입찰</h2>
+
+          <div class="team-select-box">
+            <label>내 팀</label>
+            <select id="team-select" class="admin-input">
+              <option value="A">A팀</option>
+              <option value="B">B팀</option>
+              <option value="C">C팀</option>
+              <option value="D">D팀</option>
+              <option value="E">E팀</option>
+            </select>
+          </div>
+
+          <div class="quick-buttons">
+            <button type="button" data-add="50">+50P</button>
+            <button type="button" data-add="100">+100P</button>
+            <button type="button" data-add="200">+200P</button>
+            <button type="button" data-add="300">+300P</button>
+            <button type="button" data-add="500">+500P</button>
+          </div>
+
+          <div class="manual-bid">
+            <input id="bid-amount" type="number" placeholder="직접 입력">
+            <span>P</span>
+            <button id="bid-btn" type="button">입찰하기</button>
+          </div>
+
+          <div class="my-budget-mini">
+            내 잔여 포인트 <strong id="my-budget">1000P</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/static/js/team.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LOLPIA Admin</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="admin-header">
+      <div>
+        <h1>LOLPIA ADMIN</h1>
+        <p>경매 관리자 페이지</p>
+      </div>
+      <div class="header-links">
+        <a class="admin-link" href="/">메인 화면</a>
+        <a class="admin-link" href="/team">팀장 화면</a>
+      </div>
+    </header>
+
+    <section class="admin-dashboard">
+      <div class="admin-card admin-current-card">
+        <h2>현재 경매 상태</h2>
+        <div class="admin-current-player" id="admin-player">-</div>
+        <div class="admin-current-meta">
+          <span>상태: <strong id="admin-phase">waiting</strong></span>
+          <span>최고팀: <strong id="admin-team">-</strong></span>
+          <span>최고가: <strong><span id="admin-bid">0</span>P</strong></span>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h2>테스트 선수 설정</h2>
+        <input id="test-player-name" class="admin-input" placeholder="선수 닉네임 입력">
+        <select id="test-player-position" class="admin-input">
+          <option value="TOP">TOP</option>
+          <option value="JGL">JGL</option>
+          <option value="MID">MID</option>
+          <option value="ADC">ADC</option>
+          <option value="SUP">SUP</option>
+        </select>
+        <button class="admin-btn primary" id="set-player-btn">현재 선수로 설정</button>
+      </div>
+
+      <div class="admin-card">
+        <h2>경매 조작</h2>
+        <button class="admin-btn primary" id="load-players-btn">선수목록 불러오기</button>
+        <button class="admin-btn start" id="start-auction-btn">경매 시작</button>
+        <button class="admin-btn next" id="next-player-btn">다음 선수</button>
+        <button class="admin-btn next" id="pause-auction-btn">일시정지</button>
+        <button class="admin-btn start" id="resume-auction-btn">재개</button>
+        <button class="admin-btn danger" id="undo-btn">마지막 낙찰 되돌리기</button>
+        <button class="admin-btn primary" id="save-results-btn">결과 CSV 저장</button>
+        <button class="admin-btn primary" id="save-state-btn">현재 상태 저장</button>
+        <button class="admin-btn next" id="load-state-btn">저장 상태 불러오기</button>
+        <button class="admin-btn danger" id="reset-keep-players-btn">경매 초기화</button>
+<button class="admin-btn danger" id="reset-full-btn">새 대회 시작</button>
+      </div>
+    </section>
+
+    <main class="admin-operation-layout">
+      <section class="admin-card">
+        <h2>선수 목록</h2>
+        <div id="player-list" class="admin-player-list">
+          <p>아직 불러온 선수가 없습니다.</p>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <h2>선택한 선수</h2>
+        <div id="selected-player-box" class="selected-player-box">
+          <p>선수를 선택하면 상세 정보가 표시됩니다.</p>
+        </div>
+
+        <button class="admin-btn primary" id="set-selected-player-btn">이 선수 경매로 설정</button>
+        <button class="admin-btn danger" id="mark-unsold-btn">선택 선수 유찰 처리</button>
+
+        <select id="force-sell-team" class="admin-input">
+          <option value="A">A팀</option>
+          <option value="B">B팀</option>
+          <option value="C">C팀</option>
+          <option value="D">D팀</option>
+          <option value="E">E팀</option>
+        </select>
+
+        <input id="force-sell-price" class="admin-input" type="number" placeholder="강제 낙찰 가격">
+        <button class="admin-btn start" id="force-sell-btn">선택 선수 강제 낙찰</button>
+      </section>
+
+      <section class="admin-card">
+        <h2>팀 현황</h2>
+        <div id="admin-team-status" class="admin-team-status">
+          <p>팀 정보를 불러오는 중...</p>
+        </div>
+      </section>
+
+      <section class="admin-card result-card">
+        <h2>낙찰 결과</h2>
+        <div id="sold-result-list" class="sold-result-list">
+          <p>아직 낙찰 결과가 없습니다.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>

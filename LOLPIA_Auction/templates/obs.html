@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LOLPIA OBS</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="draft-body obs-draft-body">
+  <div class="draft-app obs-draft-app">
+
+    <header class="draft-top">
+      <section class="draft-top-panel">
+        <h3>경매 진행 현황</h3>
+        <div class="progress-stats top-progress">
+          <div>
+            <span>총 선수</span>
+            <strong id="obs-stat-total">0명</strong>
+          </div>
+          <div>
+            <span>낙찰 완료</span>
+            <strong id="obs-stat-sold">0명</strong>
+          </div>
+          <div>
+            <span>남은 선수</span>
+            <strong id="obs-stat-left">0명</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="draft-title">
+        <h1>롤피아 경매</h1>
+        <p>LOLPIA AUCTION</p>
+      </div>
+
+      <section class="draft-top-panel">
+        <h3>최근 경매 로그</h3>
+        <div id="obs-top-log-list" class="team-log-list top-log">
+          <p>아직 로그가 없습니다.</p>
+        </div>
+      </section>
+    </header>
+
+    <main class="draft-grid obs-draft-grid">
+      <section class="draft-left">
+        <div id="obs-team-roster-list" class="team-roster-list"></div>
+      </section>
+
+      <section class="draft-center">
+        <div class="auction-status">현재 경매 진행 중</div>
+
+        <div class="auction-player-card">
+          <div class="player-image-placeholder">?</div>
+          <h2 id="obs-player">-</h2>
+          <p id="obs-position">POSITION</p>
+        </div>
+
+        <div class="auction-price-box">
+          <span>현재가</span>
+          <strong><b id="obs-bid">0</b>P</strong>
+        </div>
+
+        <div class="auction-timer-box">
+          <span>남은 시간</span>
+          <strong id="obs-timer">15</strong>
+          <small>SEC</small>
+        </div>
+      </section>
+
+      <section class="draft-right">
+        <div class="bid-board">
+          <h2>현재 입찰 현황</h2>
+          <div id="obs-bid-rank-list" class="bid-rank-list"></div>
+        </div>
+
+        <div class="obs-big-log-board">
+          <h2>실시간 로그</h2>
+          <div id="obs-log-list" class="obs-big-log-list">
+            <p>아직 로그가 없습니다.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/static/js/obs.js"></script>
+</body>
+</html>
