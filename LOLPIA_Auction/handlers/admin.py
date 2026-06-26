@@ -24,8 +24,8 @@ def load_players_from_csv():
         "A": "사 라",
         "B": "이 궤",
         "C": "이 브",
-        "D": "D팀장",
-        "E": "E팀장",
+        "D": "싶 오",
+        "E": "유나라",
     }
 
     players = []
