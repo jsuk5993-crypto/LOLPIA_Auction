@@ -79,8 +79,18 @@ function getCurrentPlayerData(state) {
 }
 
 function getPlayerByName(state, nickname) {
-  if (!state.players) return null;
-  return state.players.find((player) => player.nickname === nickname) || null;
+  if (state.players) {
+    const found = state.players.find((player) => player.nickname === nickname);
+    if (found) return found;
+  }
+
+  if (state.leader_profiles) {
+    const leaders = Object.values(state.leader_profiles);
+    const foundLeader = leaders.find((player) => player.nickname === nickname);
+    if (foundLeader) return foundLeader;
+  }
+
+  return null;
 }
 
 function getPlayerImageHtml(player, fallbackText, className) {
