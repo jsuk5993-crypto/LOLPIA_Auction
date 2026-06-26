@@ -18,6 +18,10 @@ socket.on("state_update", (state) => {
   renderTeamPage(state);
 });
 
+function getTeamColorClass(index) {
+  return `team-color-${["A", "B", "C", "D", "E"][index] || "A"}`;
+}
+
 function getTierClass(tier) {
   const cleanTier = (tier || "UNRANKED").toUpperCase();
   return `tier-${cleanTier}`;
@@ -148,10 +152,10 @@ function renderRosters(state) {
   const box = document.getElementById("team-roster-list");
   box.innerHTML = "";
 
-  Object.entries(state.teams).forEach(([name, team]) => {
+  Object.entries(state.teams).forEach(([name, team], index) => {
     const remain = team.budget - team.spent;
     const row = document.createElement("div");
-    row.className = `draft-team-row team-color-${name}`;
+    row.className = `draft-team-row ${getTeamColorClass(index)}`;
 
     const slots = [];
 
