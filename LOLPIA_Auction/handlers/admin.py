@@ -20,14 +20,27 @@ from handlers.auction import (
 
 
 def load_players_from_csv():
+    team_leaders = {
+        "A": "A팀장",
+        "B": "B팀장",
+        "C": "C팀장",
+        "D": "D팀장",
+        "E": "E팀장",
+    }
+
     players = []
 
     with open("data/players.csv", "r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
         for row in reader:
+            nickname = row.get("nickname", "").strip()
+
+            if nickname in team_leaders.values():
+                continue
+
             players.append({
-                "nickname": row.get("nickname", "").strip(),
+                "nickname": nickname,
                 "position": row.get("position", "").strip(),
                 "tier": row.get("tier", "").strip(),
                 "image": row.get("image", "").strip(),
@@ -35,6 +48,29 @@ def load_players_from_csv():
                 "team": None,
                 "price": 0
             })
+
+    state["players"] = players
+    state["current_player_index"] = -1
+    state["sold_results"] = []
+    state["current_player"] = None
+    state["current_position"] = None
+    state["current_bid"] = 0
+    state["highest_team"] = None
+    state["phase"] = "waiting"
+    state["remaining_time"] = 15
+    state["is_paused"] = True
+    state["timer_version"] += 1
+
+    for team_name, team in state["teams"].items():
+        team["spent"] = 0
+        team["players"] = []
+
+        if team_name in team_leaders:
+            team["players"].append(team_leaders[team_name])
+
+    state["logs"].insert(0, f"팀장 5명을 배치하고 경매 선수 {len(players)}명을 불러왔습니다.")
+
+    return players
 
     state["players"] = players
     state["current_player_index"] = -1
