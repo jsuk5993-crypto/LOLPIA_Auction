@@ -25,9 +25,10 @@ def load_players_from_csv():
         "B": "이 궤",
         "C": "이 브",
         "D": "싶 오",
-        "E": "유나라",
+        "E": "채집당함",
     }
 
+    leader_profiles = {}
     players = []
 
     with open("data/players.csv", "r", encoding="utf-8") as file:
@@ -36,10 +37,7 @@ def load_players_from_csv():
         for row in reader:
             nickname = row.get("nickname", "").strip()
 
-            if nickname in team_leaders.values():
-                continue
-
-            players.append({
+            player_data = {
                 "nickname": nickname,
                 "position": row.get("position", "").strip(),
                 "tier": row.get("tier", "").strip(),
@@ -47,9 +45,22 @@ def load_players_from_csv():
                 "sold": False,
                 "team": None,
                 "price": 0
-            })
+            }
+
+            leader_team = None
+            for team_name, leader_name in team_leaders.items():
+                if nickname == leader_name:
+                    leader_team = team_name
+                    break
+
+            if leader_team:
+                leader_profiles[leader_team] = player_data
+                continue
+
+            players.append(player_data)
 
     state["players"] = players
+    state["leader_profiles"] = leader_profiles
     state["current_player_index"] = -1
     state["sold_results"] = []
     state["current_player"] = None
